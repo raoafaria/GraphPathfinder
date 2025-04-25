@@ -24,7 +24,8 @@ Edit
 
 1. **Clone or download this repository**:
    git clone https://github.com/raoafaria/graph_algorithms.git
-   cd GraphPathfinder
+
+    cd GraphPathfinder
 
 # Run the program:
 python graph_algorithms.py
