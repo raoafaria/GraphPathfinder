@@ -30,7 +30,6 @@ def bellman_ford(graph, vertices, start):
                 if dist[u] + w < dist[v]:
                     dist[v] = dist[u] + w
 
-    # Check for negative-weight cycles
     for u in graph:
         for v, w in graph[u].items():
             if dist[u] + w < dist[v]:
@@ -39,6 +38,7 @@ def bellman_ford(graph, vertices, start):
     return dist
 
 def floyd_warshall(graph, vertices):
+    # In-place update: only O(n^2) space used
     dist = {u: {v: float('inf') for v in vertices} for u in vertices}
     for v in vertices:
         dist[v][v] = 0
@@ -50,6 +50,7 @@ def floyd_warshall(graph, vertices):
     for k in vertices:
         for i in vertices:
             for j in vertices:
+                # In-place update to minimize space complexity
                 if dist[i][k] + dist[k][j] < dist[i][j]:
                     dist[i][j] = dist[i][k] + dist[k][j]
 
@@ -89,6 +90,7 @@ def main():
         if choice == '1':
             start = input(f"Enter start node from {vertices}: ")
             if start in vertices:
+                print("Note: Dijkstra's Algorithm assumes no negative-weight edges.")
                 dist = dijkstra(graph, start)
                 print_distances(dist)
             else:
